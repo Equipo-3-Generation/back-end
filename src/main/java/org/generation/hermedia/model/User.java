@@ -2,6 +2,7 @@ package org.generation.hermedia.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -12,25 +13,25 @@ public class User {
     @Column(name = "id_user")
     private Long id;
     @Column(length = 70, nullable = false, unique = true)
-    private String nombre;
+    private String name;
     @Column(length = 70, nullable = false, unique = true)
-    private String apellido;
-    @Column(length = 15, nullable = false, unique = true)
-    private String numeroTelefonico;
+    private String lastName;
+    @Column(name = "telephone_number", length = 15, nullable = false, unique = true)
+    private String telephoneNumber;
     @Column(length = 70, nullable = false, unique = true)
     private String email;
     @Column(length = 15, nullable = false)
     private String password;
     @Column(length =160, nullable = false)
-    private String direccion;
+    private String address;
     @Column(length = 50, nullable = false)
-    private String pais;
+    private String country;
     @Column(length = 50, nullable = false)
     private String region;
     @Column(length = 50, nullable = false)
-    private String ciudad;
-    @Column(length = 10, nullable = false)
-    private String codigoPostal;
+    private String city;
+    @Column(name = "zip_code", length = 10, nullable = false)
+    private String zipCode;
 
     //Despues de añadir las restricciones con las anotaciones hacemos este Constructor vacio para JPA para poder hacer la tabla se añade vacio
 
@@ -38,17 +39,19 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String nombre, String apellido, String numeroTelefonico, String email, String direccion, String pais, String region, String ciudad, String codigoPostal) {
+    public User(Long id, String name, String lastName, String telephoneNumber, String email, String password, String address, String country, String region, String city, String zipCode, List<Order> orders) {
         this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.numeroTelefonico = numeroTelefonico;
+        this.name = name;
+        this.lastName = lastName;
+        this.telephoneNumber = telephoneNumber;
         this.email = email;
-        this.direccion = direccion;
-        this.pais = pais;
+        this.password = password;
+        this.address = address;
+        this.country = country;
         this.region = region;
-        this.ciudad = ciudad;
-        this.codigoPostal = codigoPostal;
+        this.city = city;
+        this.zipCode = zipCode;
+        this.orders = orders;
     }
 
     public Long getId() {
@@ -59,28 +62,28 @@ public class User {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getNumeroTelefonico() {
-        return numeroTelefonico;
+    public String getTelephoneNumber() {
+        return telephoneNumber;
     }
 
-    public void setNumeroTelefonico(String numeroTelefonico) {
-        this.numeroTelefonico = numeroTelefonico;
+    public void setTelephoneNumber(String telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
     }
 
     public String getEmail() {
@@ -91,20 +94,28 @@ public class User {
         this.email = email;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getPassword() {
+        return password;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getPais() {
-        return pais;
+    public String getAddress() {
+        return address;
     }
 
-    public void setPais(String pais) {
-        this.pais = pais;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getRegion() {
@@ -115,47 +126,59 @@ public class User {
         this.region = region;
     }
 
-    public String getCiudad() {
-        return ciudad;
+    public String getCity() {
+        return city;
     }
 
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public String getCodigoPostal() {
-        return codigoPostal;
+    public String getZipCode() {
+        return zipCode;
     }
 
-    public void setCodigoPostal(String codigoPostal) {
-        this.codigoPostal = codigoPostal;
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", numeroTelefonico='" + numeroTelefonico + '\'' +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", telephoneNumber='" + telephoneNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", direccion='" + direccion + '\'' +
-                ", pais='" + pais + '\'' +
+                ", password='" + password + '\'' +
+                ", address='" + address + '\'' +
+                ", country='" + country + '\'' +
                 ", region='" + region + '\'' +
-                ", ciudad='" + ciudad + '\'' +
-                ", codigoPostal='" + codigoPostal + '\'' +
+                ", city='" + city + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", orders=" + orders +
                 '}';
-
     }
 
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof User user)) return false;
-        return Objects.equals(id, user.id) && Objects.equals(nombre, user.nombre) && Objects.equals(apellido, user.apellido) && Objects.equals(numeroTelefonico, user.numeroTelefonico) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(direccion, user.direccion) && Objects.equals(pais, user.pais) && Objects.equals(region, user.region) && Objects.equals(ciudad, user.ciudad) && Objects.equals(codigoPostal, user.codigoPostal);
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(lastName, user.lastName) && Objects.equals(telephoneNumber, user.telephoneNumber) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(address, user.address) && Objects.equals(country, user.country) && Objects.equals(region, user.region) && Objects.equals(city, user.city) && Objects.equals(zipCode, user.zipCode) && Objects.equals(orders, user.orders);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, apellido, numeroTelefonico, email, password, direccion, pais, region, ciudad, codigoPostal);
+        return Objects.hash(id, name, lastName, telephoneNumber, email, password, address, country, region, city, zipCode, orders);
+    }
+
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }
