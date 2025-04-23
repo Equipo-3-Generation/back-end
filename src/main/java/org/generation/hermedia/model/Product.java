@@ -31,7 +31,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Integer id, String name, String description, BigDecimal price, Integer stock, String dimensions, ProductCategory category, List<OrderDetails> productDetails) {
+    public Product(Integer id, String name, String description, BigDecimal price, Integer stock, String dimensions, ProductCategory category) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -39,7 +39,6 @@ public class Product {
         this.stock = stock;
         this.dimensions = dimensions;
         this.category = category;
-        this.productDetails = productDetails;
     }
 
     public Integer getId() {
@@ -100,19 +99,18 @@ public class Product {
                 ", stock=" + stock +
                 ", dimensions='" + dimensions + '\'' +
                 ", category=" + category +
-                ", productDetails=" + productDetails +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Product product)) return false;
-        return Objects.equals(id, product.id) && Objects.equals(name, product.name) && Objects.equals(description, product.description) && Objects.equals(price, product.price) && Objects.equals(stock, product.stock) && Objects.equals(dimensions, product.dimensions) && Objects.equals(category, product.category) && Objects.equals(productDetails, product.productDetails);
+        return Objects.equals(id, product.id) && Objects.equals(name, product.name) && Objects.equals(description, product.description) && Objects.equals(price, product.price) && Objects.equals(stock, product.stock) && Objects.equals(dimensions, product.dimensions) && Objects.equals(category, product.category);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, price, stock, dimensions, category, productDetails);
+        return Objects.hash(id, name, description, price, stock, dimensions, category);
     }
 
     @ManyToOne
@@ -127,17 +125,7 @@ public class Product {
         this.category = category;
     }
 
-    @OneToMany(mappedBy = "product")
-    private List<OrderDetails> productDetails;
 
-    public List<OrderDetails> getProductDetails() {
-        return productDetails;
-    }
-
-
-    public void setProductDetails(List<OrderDetails> productDetails) {
-        this.productDetails = productDetails;
-    }
 
 // Getters, Setters, equals, hashCode y toString
 }
