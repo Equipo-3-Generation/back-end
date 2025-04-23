@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 
-
-
-//Este paso es despues de userRepository
+//Este paso es después de userRepository
 @Service
 public class UserService {
     //--Crear variable de tipo UserRepository se encapsula con private
@@ -25,6 +23,7 @@ public class UserService {
     }
 
     //Recuperar los users con metodoList recibira la clase del model no lleva parametros porque queremos todos los usuarios, osea todas las instancias de la entidad
+
     public List<User> getUsers(){
         return userRepository.findAll();
     }
@@ -34,7 +33,6 @@ public class UserService {
      public User createUser(User newUser){
          return userRepository.save(newUser);
      }
-
 
 
     //Este metodo se creo a partir del nuevo controller y es un metodo para recuperar un usuario por email
@@ -69,7 +67,5 @@ public class UserService {
                 })
                 .orElseThrow(()-> new UserNotFoundException(id)) ;//llamamos a exception
     }
-
-
 
 }

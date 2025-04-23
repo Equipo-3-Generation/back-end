@@ -31,14 +31,13 @@ public class Product {
     public Product() {
     }
 
-    public Product(Integer id, String name, String description, BigDecimal price, Integer stock, String dimensions, ProductCategory category) {
+    public Product(Integer id, String name, String description, BigDecimal price, Integer stock, String dimensions) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.stock = stock;
         this.dimensions = dimensions;
-        this.category = category;
     }
 
     public Integer getId() {
@@ -98,32 +97,21 @@ public class Product {
                 ", price=" + price +
                 ", stock=" + stock +
                 ", dimensions='" + dimensions + '\'' +
-                ", category=" + category +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Product product)) return false;
-        return Objects.equals(id, product.id) && Objects.equals(name, product.name) && Objects.equals(description, product.description) && Objects.equals(price, product.price) && Objects.equals(stock, product.stock) && Objects.equals(dimensions, product.dimensions) && Objects.equals(category, product.category);
+        return Objects.equals(id, product.id) && Objects.equals(name, product.name) && Objects.equals(description, product.description) && Objects.equals(price, product.price) && Objects.equals(stock, product.stock) && Objects.equals(dimensions, product.dimensions);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, price, stock, dimensions, category);
+        return Objects.hash(id, name, description, price, stock, dimensions);
     }
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private ProductCategory category;
 
-    public ProductCategory getCategory() {
-        return category;
-    }
-
-    public void setCategory(ProductCategory category) {
-        this.category = category;
-    }
 
 
 

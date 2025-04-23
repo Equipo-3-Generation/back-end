@@ -43,11 +43,6 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.createUser(newUser));//201
     }
 
-
-
-
-
-
     //Despues de esto es indicarle a springboot que debe solicitarle los datos al usuario con la siguiente anotacion @RequestBody que sera parte de los parametros. El body se refiiere a los atributos username etc excepto id requestbody jalara los valores de los inputs, va adentro porque apuntara a la nueva instancia que se va a crear
 
 

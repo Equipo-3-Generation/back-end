@@ -17,7 +17,7 @@ import java.util.List;
 import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 @Service
 public class ProductService {
-    // Crear producto
+
     private final ProductRepository productRepository;
 
 
@@ -33,13 +33,13 @@ public class ProductService {
     }
 
 
+//listar los productos
 
-    //Recuperar los users con metodoList recibira la clase del model no lleva parametros porque queremos todos los usuarios, osea todas las instancias de la entidad
     public List<Product> getProducts() {
         return productRepository.findAll();
     }
 
-    //Metodo para crear un nuevo usuario debe ser el mismo tipo del model si se le debe definir parametro para que se cree un objeto en return le pedimos a userRepository el metodo save para eso le pasamos el parametro y lo que hara es guardar una entidad en ese parametro (por el momento no estamos agregando validaciones)
+   //Crear producto
 
     public Product createProduct(Product newProduct) {
         return productRepository.save(newProduct);
@@ -47,10 +47,6 @@ public class ProductService {
     public Product findById(Integer id){
         return productRepository.findById(id).orElseThrow(()-> new ProductNotFoundException(id));
     }
-
-
-
-    //Este metodo se creo a partir del nuevo controller y es un metodo para recuperar un usuario por email
 
 
     //Metodo para eliminar un producto
@@ -64,12 +60,13 @@ public class ProductService {
 
     }
 
+    //Modificar un producto
+
     public Product updateProduct(Product product, Integer id) {
         return productRepository.findById(id)
                 .map(productMap -> {
                     productMap.setName(product.getName());
                     productMap.setDescription(product.getDescription());
-                    productMap.setCategory(product.getCategory());
                     return productRepository.save(productMap);
                 })
                 .orElseThrow(() -> new ProductNotFoundException(id));//llamamos a exception

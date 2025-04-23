@@ -25,8 +25,6 @@ public class ProductController {
 
     private final ProductService productService;
 
-
-
     @Autowired
     public ProductController(ProductService productService) {
         this.productService = productService;
@@ -39,9 +37,7 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody Product newProduct) {
-        //Comentamos las respuesta, evaluamos si es posible crear un nuevo usuario con los usuarios que ya existen con un if
-        //Evaluar si el usuario existe mediante (email o username) en este caso será solo username
-        //Si existeinfo se lanza un status 409 uy si no se lanza un 201
+
         if (productService.findByName(newProduct.getName()) != null) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
@@ -50,14 +46,6 @@ public class ProductController {
     }
 
 
-
-
-
-
-
-
-//Este metodo sigue despues de laexception de userService metodo para obtener usuario por Id(404 NotFoun y 200) con un bloque de tipo try catch
-//e por exception
 
 
     @GetMapping("{id}")//Llaves indican que el path puede ser cualquier n de id no es necesario colocar id
