@@ -34,7 +34,6 @@ public class User {
     public User(Long id, String name, String lastName, String telephoneNumber, String email, String password){
         this.id = id;
         this.name = name;
-        this.lastName = lastName;
         this.telephoneNumber = telephoneNumber;
         this.email = email;
         this.password = password;
@@ -55,14 +54,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getTelephoneNumber() {
@@ -97,7 +88,6 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
                 ", telephoneNumber='" + telephoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
@@ -110,12 +100,12 @@ public class User {
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof User user)) return false;
-        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(lastName, user.lastName) && Objects.equals(telephoneNumber, user.telephoneNumber) && Objects.equals(email, user.email) && Objects.equals(password, user.password);
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(telephoneNumber, user.telephoneNumber) && Objects.equals(email, user.email) && Objects.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, lastName, telephoneNumber, email, password);
+        return Objects.hash(id, name, telephoneNumber, email, password);
     }
 
 
@@ -124,11 +114,11 @@ public class User {
     private List<Product> products;
 
     // Getters y Setter de orders
-    public List<Product> getOrders() {
+    public List<Product> getProducts() {
         return products;
     }
 
-    public void setOrders(List<Product> orders) {
+    public void setProducts(List<Product> products) {
         this.products = products;
     }
 

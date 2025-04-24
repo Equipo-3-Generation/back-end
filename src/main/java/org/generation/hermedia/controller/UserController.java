@@ -50,9 +50,6 @@ public class UserController {
         }
     }
 
-
-
-
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User newUser) {
         //Comentamos las respuesta, evaluamos si es posible crear un nuevo usuario con los usuarios que ya existen con un if

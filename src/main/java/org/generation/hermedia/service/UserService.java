@@ -61,7 +61,6 @@ public class UserService {
         return userRepository.findById(id)
                 .map(userMap -> {
                     userMap.setName(user.getName());
-                    userMap.setLastName(user.getLastName());
                     userMap.setEmail(user.getEmail());
                     userMap.setTelephoneNumber(user.getTelephoneNumber());
                     userMap.setPassword(user.getPassword());
