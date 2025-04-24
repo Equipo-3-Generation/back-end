@@ -1,0 +1,56 @@
+/* FORMULARIO contacto*/
+
+.contenedor-marco {
+  border: 2px solid #CCCCCC; /* Borde gris */
+  padding: 40px;
+  box-shadow: 0 4px 8px rgba(61, 61, 61, 0.1);
+  background-color: transparent; /* Fondo transparente */
+  max-width: 1000px;
+  margin: 50px auto;
+}
+
+
+#formulario-contacto {
+  border: 2px solid #CCCCCC;
+  background-color: transparent;
+  padding: 40px;
+  box-shadow: 0 4px 8px rgba(61, 61, 61, 0.1);
+  max-width: 1000px;
+  margin: 50px auto;
+}
+
+
+.form-control {
+  background-color: #CCCCCC !important; 
+  border: none !important; 
+  padding: 12px;
+  border-radius: 10px; 
+}
+
+#formulario-contacto button {
+  background-color: #F21116;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+#formulario-contacto button:hover {
+  background-color: #D10F12;
+  transform: scale(1.05);
+}
+
+#formulario-contacto .form-group {
+  margin-bottom: 20px;
+}
+
+.contact-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+  margin-bottom: 20px;
+}
+ /* Termina formulario contacto */

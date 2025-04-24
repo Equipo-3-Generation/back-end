@@ -1,0 +1,454 @@
+
+/* AQUI INICIA EL NAV BAR*/
+#barra {
+    background-color: #F21116 !important; /* Rojo */
+}
+#gris {
+    background-color: #b4b4af; /* Gris claro */
+}
+#central {
+    width: 200px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+    
+  }
+#mi-principal {
+    display: flex;
+    justify-content: center; /* Centra el menú */
+    gap: 40px; /* Espaciado entre elementos */
+    padding: 0;
+    list-style: none;
+    width: 100%;
+}
+#mi-principal li {
+    position: relative; /* Necesario para el efecto de borde */
+}
+#mi-principal li:active {
+    outline: 3px solid white; /* Agrega un borde blanco al hacer clic */
+    border-radius: 10px;
+    transform: scale(0.98); /* Un pequeño efecto de escala para que parezca un botón */
+    transition: transform 0.2s ease;
+}
+
+
+#iconos-derecha {
+    display: flex;
+    gap: 15px; /* Espaciado entre íconos */
+}
+
+#iconos-derecha img {
+    width: 30px; /* Ajusta el tamaño de los íconos */
+}
+
+ /* AQUI TERMINA EL NABVBAR*/
+
+/* Perfil de usuario */
+.user-image{
+  font-size: 200px;
+  text-align: center;
+}
+
+/* Perfil de usuario */
+
+ /* INICIA EL FOOTER
+  footer {
+  background-color: #CCCCCC !important; /* Rojo */
+
+footer {
+  background-color: #1E3A5F !important;
+  margin-top: 60px;
+  padding: 20px 20px;
+  text-align: center;
+  color: #CCCCCC;
+}
+
+footer .col-lg-3 {
+  text-align: left;
+  
+}
+
+footer .list-group-item {
+  border: none;
+  padding: 5px 0;
+  background-color:#1E3A5F;
+  color: #ccc;
+}
+
+.codigo-cepa {
+  text-decoration: none;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.codigo-cepa:hover {
+  color: #F21116;
+}
+#footer-bottom {
+  background-color: #020c11;
+  padding: 20px;
+  color: #ccc;
+  text-align: center;
+}
+ /* TERMINA FOOTER */
+
+.parrafito {
+  background-color: #f7f3f3;
+  padding: 20px;
+  
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 600px;
+}
+.resaltado1 {
+  font-weight: bold;  /* Negritas */
+  color: #F21116; /* Color naranja o cualquier otro */
+  font-size: 30px;
+}
+.resaltado {
+  font-weight: bold;  /* Negritas */
+  color: #092cc7; /* Color naranja o cualquier otro */
+}
+.borde-azul {
+ 
+  border: 25px solid #020c11; /* Borde azul grueso */
+  padding: 1px; /* Espaciado entre el borde y el contenido */
+  display: inline-block;
+  border-radius: 12px; /* Opcional: para esquinas redondeadas */
+  margin-top: 60px ;
+  margin-bottom: 60px;
+  
+}
+
+
+.contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 40px;
+    padding: 20px;
+    padding-top: 40px;
+     /*  background-color: #1E3A5F; Azul */
+    background: linear-gradient(to top, #e01b25, #1E3A5F);
+  }
+  .about-us-inicio {
+    background-color: #1E3A5F;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 50px;
+  } 
+  .mag-3d{
+   width: 800px;
+  }
+  .parrafo-nosotras{
+    font-size: 20px;
+  }
+  .container-titular{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 35px;
+  }
+  .titular-equipo{
+    background-color: #F21116;
+    color: #f4f4f4;
+    padding: 24px;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
+  }
+  .titular-equipo{
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    
+  }
+  
+  .tarjeta {
+    width: 28%;
+    max-width: 420px;
+    aspect-ratio: 3 / 4; 
+    background-color: #abadad; /* Gris */
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tarjeta img {
+  width: 85%;
+  height: auto;
+    border-radius: 4px;
+  }
+
+  
+  .tarjeta h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+  }
+  
+  .tarjeta p {
+    font-size: 0.9em;
+    color: #8f3f3f;
+  }
+  .tarjeta-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+  
+  .tarjeta:hover .tarjeta-inner {
+    transform: rotateY(180deg); /* Volteamos la tarjeta al pasar el mouse */
+  }
+  
+  .tarjeta-front, .tarjeta-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Oculta la parte de atrás cuando se voltea */
+  }
+  
+  .tarjeta-front {
+    background-color: #e0e0e0; /* Gris */
+    text-align: center;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tarjeta-back {
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    transform: rotateY(180deg); /* Volteamos la parte posterior */
+    border-radius: 8px;
+  }
+  
+
+
+  /* Responsividad */
+  @media (max-width: 1250px) {
+
+    .about-us-inicio {
+      background-color: #1E3A5F;
+      display: flex;
+      flex-direction: column;
+      margin-top: 50px;
+    }
+
+  }
+  @media (max-width: 768px) {
+    .tarjeta {
+      width: 45%;
+      height:30% !important;
+
+    }
+    .mag-3d{
+      width: 390px;
+     }
+
+  }
+
+  @media (max-width: 480px) {
+    .tarjeta {
+      width: 90%;
+      height: 250px !important;
+    }
+    .mag-3d{
+      width: 150px;
+     }
+}
+
+/* Index */
+
+/* Inicia sección de Carrusel de index */
+
+/* Asegurar que los botones de navegación no sean bloqueados */
+.carousel-control-prev,
+.carousel-control-next {
+    z-index: 10; /* Mayor que la capa del texto */
+}
+
+
+.carousel-item img {
+  height: 500px; /* Ajusta la altura */
+  object-fit: cover; /* Para mantener proporciones */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); /* Iconos con fondo oscuro */
+  border-radius: 50%;
+}
+
+.carousel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.5); /* Oscurece ligeramente el fondo */
+}
+
+.carousel-item img {
+  opacity: 0.8; /* Hace que las imágenes sean un poco transparentes */
+}
+
+.carousel-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.carousel-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-carousel {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #000000; /* Botón rojo */
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn-carousel:hover {
+  background-color: #000000; /* Botón rojo más oscuro */
+}
+
+.carousel-overlay {
+  pointer-events: none;
+}
+
+.carousel-overlay * {
+  pointer-events: auto;
+}
+
+
+
+/*Terminan estilos de carrusel*/
+
+
+
+    /* empiezan cards*/
+    .card {
+      height: 100%; /* Todas las cards tendrán la misma altura */
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .card-img-top {
+      height: 300px; /* Tamaño fijo para las imágenes */
+      object-fit: cover; /* Ajusta la imagen sin deformarla */
+  }
+  
+  .card-body {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+  }
+  
+  .card-title, .card-text {
+      min-height: 50px; /* Ajusta según el contenido más largo */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+  }
+  
+  /* stilo estrellas rating*/
+  .rating i {
+      font-size: 24px;
+      color: gold;
+      cursor: pointer;
+  }
+  
+
+
+/* Inicia sección Nuestros productos de index */
+
+
+.about {
+  padding-top: 90px;
+}
+
+.title {
+  text-align: center;
+  padding-bottom: 60px;
+}
+
+.about .about_box {
+  background: #191918;
+  padding: 55px 40px;
+  
+}
+.about .about_img {
+  padding: 55px 40px;
+  height: 100%;
+  background: red;
+  margin-top: 2rem;
+}
+.about .about_img figure {
+  margin: 0;
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .about .about_img {
+      margin-top: 30px;
+      margin-right: 65px;
+  }
+}
+
+.about .about_box h3 {
+  font-size: 30px;
+  line-height: 28px;
+  color: #fff;
+  font-weight: 500;
+  padding: 0;
+}
+
+.about .about_box p {
+  color: #ffff;
+  font-size: 17px;
+  line-height: 28px;
+  padding: 30px 0px;
+  font-weight: 400;
+}
+
+.about .about_box a {
+  color: #fff;
+  font-size: 22px;
+  line-height: 29px;
+}
+
+.about .about_img figure {
+  margin: 0;
+  margin-right: 50px;
+  padding: 92px 0px 0px 60px;
+  margin-right: -64px;
+}
+
+/*Termina Index*/
