@@ -117,5 +117,21 @@ public class User {
     public int hashCode() {
         return Objects.hash(id, name, lastName, telephoneNumber, email, password);
     }
+
+
+    //Relación
+    @OneToMany(mappedBy = "user")
+    private List<Product> products;
+
+    // Getters y Setter de orders
+    public List<Product> getOrders() {
+        return products;
+    }
+
+    public void setOrders(List<Product> orders) {
+        this.products = products;
+    }
+
+
 }
 

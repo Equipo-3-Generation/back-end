@@ -1,6 +1,8 @@
 package org.generation.hermedia.service;
 
 
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import org.generation.hermedia.exception.ProductNotFoundException;
 import org.generation.hermedia.exception.UserNotFoundException;
 import org.generation.hermedia.model.Product;
@@ -71,4 +73,6 @@ public class ProductService {
                 })
                 .orElseThrow(() -> new ProductNotFoundException(id));//llamamos a exception
     }
+
+
 }
