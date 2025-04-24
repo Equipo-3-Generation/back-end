@@ -31,6 +31,28 @@ public class UserController {
         return userService.getUsers();
     }
 
+    @DeleteMapping("/delete-user/{id}") // localhost:8080/api/v1/users/delete-user/id
+    public ResponseEntity<User> deleteUser(@PathVariable Long id) {
+        try {
+            userService.deleteUser(id);
+            return ResponseEntity.noContent().build();
+        } catch (UserNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/update-user/{id}")
+    public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable Long id) {
+        try {
+            return ResponseEntity.ok(userService.updateUser(user, id));
+        } catch (UserNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
+
+
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User newUser) {
         //Comentamos las respuesta, evaluamos si es posible crear un nuevo usuario con los usuarios que ya existen con un if
@@ -49,7 +71,7 @@ public class UserController {
 //Model creo la entidad y se toma como base para crear user repository luego userrepository se inyecta en userservice, despues arquitectura desacoplada
 
 
-//Este metodo sigue despues de laexception de userService metodo para obtener usuario por Id(404 NotFoun y 200) con un bloque de tipo try catch
+//Este metodo sigue despues de laexception de userService metodo para obtener usuario por Id(404 NotFound y 200) con un bloque de tipo try catch
 //e por exception
 
 
@@ -65,6 +87,15 @@ public class UserController {
 
         }
 
+    }
+    // Método para recuperar por Email
+    @GetMapping("/email/{email}")
+    public ResponseEntity<User> getByEmail(@PathVariable String email) {
+        User userByEmail = userService.findByEmail(email);
 
+        if(userByEmail== null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(userByEmail);
     }
 }
