@@ -52,7 +52,6 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User newUser) {
-        //Comentamos las respuesta, evaluamos si es posible crear un nuevo usuario con los usuarios que ya existen con un if
         //Evaluar si el usuario existe mediante (email o username) en este caso será solo username
         //Si existeinfo se lanza un status 409 uy si no se lanza un 201
         if (userService.findByEmail(newUser.getEmail()) != null) {
@@ -62,7 +61,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.createUser(newUser));//201
     }
 
-    //Despues de esto es indicarle a springboot que debe solicitarle los datos al usuario con la siguiente anotacion @RequestBody que sera parte de los parametros. El body se refiiere a los atributos username etc excepto id requestbody jalara los valores de los inputs, va adentro porque apuntara a la nueva instancia que se va a crear
+    //Despues indicarle a springboot que debe solicitarle los datos al usuario con la siguiente anotacion @RequestBody que sera parte de los parametros. El body se refiiere a los atributos username etc excepto id requestbody jalara los valores de los inputs, va adentro porque apuntara a la nueva instancia que se va a crear
 
 
 //Model creo la entidad y se toma como base para crear user repository luego userrepository se inyecta en userservice, despues arquitectura desacoplada
