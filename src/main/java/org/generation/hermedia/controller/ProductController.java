@@ -37,12 +37,15 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody Product newProduct) {
-
-        if (productService.findByName(newProduct.getName()) != null) {
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        if (newProduct == null || newProduct.getName() == null || newProduct.getDescription() == null || newProduct.getPrice() == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST); // 400 Bad Request si faltan campos
         }
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(productService.createProduct(newProduct));//201
+        if (productService.findByName(newProduct.getName()) != null) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT); // 409 si ya existe un producto con el mismo nombre
+        }
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(productService.createProduct(newProduct)); // 201 Created
     }
 
 
