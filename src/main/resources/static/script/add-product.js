@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
             dimensions: dimensiones
         }
 
-        const url = `http://localhost:8080/api/products`;
+        const url = `http://3.84.190.109/api/products`;
 
         fetch(url, {
             method: 'POST',

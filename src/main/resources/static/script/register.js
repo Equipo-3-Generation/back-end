@@ -78,7 +78,7 @@ document.getElementById("registerForm").addEventListener("submit", function(even
         password: password
     }
 
-    const url = `http://localhost:8080/api/users`;
+    const url = `http://3.84.190.109/api/users`;
 
     fetch(url, {
         method: 'POST',
@@ -91,12 +91,14 @@ document.getElementById("registerForm").addEventListener("submit", function(even
             return response.json();
         })
         .then(data => {
+            mostrarModal("Registro exitoso 🎉");
+            document.getElementById("registerForm").reset();
             console.log('Guardado', data)
         })
         .catch(error => {
+            mostrarModal("Error al realizar registro");
             console.error(error);
         })
 
-    mostrarModal("Registro exitoso 🎉");
-    document.getElementById("registerForm").reset();
+
 });
