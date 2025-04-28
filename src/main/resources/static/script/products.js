@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', function () {
         card.innerHTML = `
             <div class="card rounded-0 h-100 text-center">
                 <div class="imagen-box">
-                    <img src="${producto.imagen}" class="card-img-top imagen" alt="${producto.nombre}">
+                    <img src="${producto.imageUrl}" class="card-img-top imagen" alt="${producto.name}">
                 </div>
                 <div class="card-body d-flex flex-column justify-content-between">
-                    <h5 class="card-title text-primary-emphasis fw-bold">${producto.nombre.toUpperCase()}</h5>
-                    <p class="card-text text-danger fw-bold">$${producto.precio}</p>
-                    <p class="text-muted small">Categoría: ${producto.categoria}</p>
+                    <h5 class="card-title text-primary-emphasis fw-bold">${producto.name.toUpperCase()}</h5>
+                    <p class="card-text text-danger fw-bold">$${producto.price}</p>
+                    <p class="text-muted small">Categoría: ${producto.category}</p>
                     <button class="btn btn-dark rounded-0 mt-auto" onclick="agregarAlCarrito(${index})">Añadir al carrito</button>
                 </div>
             </div>
@@ -37,12 +37,12 @@ function agregarAlCarrito(index) {
     alert('Producto añadido al carrito.');
 }
 
-function agregarProductoManual(nombre, precio, imagen) {
+function agregarProductoManual(name, price, imageUrl) {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     carrito.push({
-        nombre: nombre,
-        precio: precio,
-        imagen: imagen,
+        name: name,
+        price: price,
+        imageUrl: imageUrl,
         cantidad: 1
     });
     localStorage.setItem('carrito', JSON.stringify(carrito));

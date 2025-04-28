@@ -63,7 +63,11 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => {
             console.error('Error', error);
-            mostrarToast('Error al agregar producto.');
+            if (error.message.includes('409') || error.message.includes('duplicado')) {
+                mostrarToast('Ya existe un producto con ese nombre.');
+            } else {
+                mostrarToast('Error al agregar producto.');
+            }
         });
     });
 

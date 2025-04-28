@@ -61,11 +61,11 @@ document.addEventListener('DOMContentLoaded', function () {
         card.innerHTML = `
             <div class="card text-center">
                 <div class="imagen-box">
-                    <img src="${producto.imagen}" class="card-img-top imagen" alt="${producto.nombre}">
+                    <img src="${producto.imageUrl}" class="card-img-top imagen" alt="${producto.name}">
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title fw-bold text-danger">${producto.nombre}</h5>
-                    <p class="card-text fw-bold">$${producto.precio}</p>
+                    <h5 class="card-title fw-bold text-danger">${producto.name}</h5>
+                    <p class="card-text fw-bold">$${producto.price}</p>
                     <a href="/pages/products.html" class="btn btn-dark rounded-2">Ver más productos</a>
                 </div>
             </div>

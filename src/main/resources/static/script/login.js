@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .then(user => {
                 if(user.password === password) {
-                    localStorage.setItem('usuarioActual', JSON.stringify(user));
+                    localStorage.setItem('currentUser', JSON.stringify(user));
                     mostrarModal('Inicio de sesión exitoso 🎉');
                     setTimeout(() => {
                         window.location.href = '/index.html';

@@ -2,7 +2,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     const carritoContainer = document.getElementById('carritoContainer');
     const totalCarrito = document.getElementById('totalCarrito');
+    const pagarBtn = document.querySelector('.btn-success');
 
+    // Función para actualizar el carrito
     function actualizarCarrito() {
         carritoContainer.innerHTML = '';
         let total = 0;
@@ -23,18 +25,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         carrito.forEach((producto, index) => {
-            if (!producto || producto.precio == null) return;
+            if (!producto || producto.price == null) return;
 
-            const subtotal = producto.precio * (producto.cantidad || 1);
+            const subtotal = producto.price * (producto.cantidad || 1);
             total += subtotal;
 
             const fila = document.createElement('tr');
             fila.innerHTML = `
                 <td>
-                    <img src="${producto.imagen}" alt="${producto.nombre}" width="50" class="me-2">
-                    ${producto.nombre}
+                    <img src="${producto.imageUrl}" alt="${producto.name}" width="50" class="me-2">
+                    ${producto.name}
                 </td>
-                <td>$${producto.precio.toFixed(2)}</td>
+                <td>$${producto.price.toFixed(2)}</td>
                 <td>
                     <input type="number" min="1" value="${producto.cantidad || 1}" class="form-control cantidad-input" data-index="${index}">
                 </td>
@@ -48,6 +50,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
         totalCarrito.textContent = `$${total.toFixed(2)}`;
     }
+
+    // Evento para proceder a pagar
+    pagarBtn.addEventListener('click', function() {
+        if (carrito.length === 0) {
+            alert('Tu carrito está vacío.');
+            return;
+        }
+
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (!currentUser) {
+            alert('Debes iniciar sesión para proceder a pagar.');
+            window.location.href = "/pages/login.html"; // por si quieres redirigir
+            return;
+        }
+
+        const userId = currentUser.id;
+        const productIds = carrito.map(producto => producto.id); // sólo IDs de productos
+
+        fetch('http://localhost:8080/api/carts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ userId, productIds })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('No se pudo guardar el carrito');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Carrito guardado exitosamente:', data);
+            alert('¡Compra registrada! 🎉');
+            // Opcional: limpiar carrito localStorage
+            localStorage.removeItem('carrito');
+            location.reload(); // recarga para ver carrito vacío
+        })
+        .catch(error => {
+            console.error('Error', error);
+            alert('Error al guardar el carrito.');
+        });
+    });
 
     // Evento para cambiar cantidad
     carritoContainer.addEventListener('input', function (e) {
