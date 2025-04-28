@@ -1,37 +1,54 @@
-function mostrarModal(mensaje) {
-    const modalBody = document.getElementById("infoModalBody");
-    modalBody.textContent = mensaje;
+document.addEventListener('DOMContentLoaded', function () {
+    const loginForm = document.getElementById('loginForm');
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
 
-    const modal = new bootstrap.Modal(document.getElementById("infoModal"));
-    modal.show();
-}
+    loginForm.addEventListener('submit', function (event) {
+        event.preventDefault();
 
-// Capturar el formulario
-document.getElementById("loginForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Evita que el formulario recargue la página
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
 
-    // Obtener valores del formulario
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const foundUser = users.find(user => user.email === email && user.password === password);
+        if(!email || !password){
+            mostrarModal('Por favor completa todos los campos')
+        }
 
-    if (foundUser) {
-        mostrarModal("Inicio de sesión exitoso"); // Mostrar mensaje solo si es correcto
+        fetch(`http://localhost:8080/api/v2/users/email/${email}`)
+            .then(response => {
+                if(!response.ok){
+                    throw new Error('Correo no encontrado');
+                }
+                return response.json();
+            })
+            .then(user => {
+                if(user.password === password) {
+                    localStorage.setItem('usuarioActual', JSON.stringify(user));
+                    mostrarModal('Inicio de sesión exitoso 🎉');
+                    setTimeout(() => {
+                        window.location.href = '/index.html';
+                    }, 2000);
+                } else {
+                    mostrarModal('Constraseña incorrecta.');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                mostrarModal('Usuario no encontrado o error en la conexión.')
+            });
+    });
 
-        localStorage.setItem("currentUser", JSON.stringify(foundUser));
-
-        // Redirigir a inicio después de 2 segundos
-        setTimeout(() => {
-            window.location.href = "/index.html";
-        }, 2000);
-    } else {
-        mostrarModal("Correo o contraseña incorrectos");
-    }
-
-    // Limpiar formulario después de enviar
-    document.getElementById("loginForm").reset();
+    // Ver contraseña
+    togglePassword.addEventListener('click', function () {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        this.innerHTML = type === 'password' ? '<i class="bi bi-eye-fill"></i>' : '<i class="bi bi-eye-slash-fill"></i>';
+    });
 });
 
+function mostrarModal(mensaje) {
+    const modalBody = document.getElementById('infoModalBody');
+    modalBody.textContent = mensaje;
 
-
+    const modal = new bootstrap.Modal(document.getElementById('infoModal'));
+    modal.show();
+}

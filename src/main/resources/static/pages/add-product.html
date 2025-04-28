@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="styles.css" rel="stylesheet">
+    <link rel="icon" href="/icon/favicon.ico" type="image/ico">
+    <link href="/style/styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Añadir productos</title>
 </head>
@@ -111,20 +112,18 @@
                         </div>
                     </div>
                     <!-- Imagen del producto -->
-                    <form>
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label fw-bold">Imagen del producto</label>
-                            <input class="form-control" type="file" id="formFile" accept="image/*">
-                        </div>
-                        <div id="previewContainer" class="mb-3">
-                            <img id="imagePreview" src="" alt="Vista previa" style="max-width: 200px; display: none;">
-                        </div>
-                    </form>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label fw-bold">Imagen del producto</label>
+                        <input class="form-control" type="text" id="formFile" placeholder="https://...">
+                    </div>
+                    <div id="previewContainer" class="mb-3">
+                        <img id="imagePreview" src="" alt="Vista previa" style="max-width: 200px; display: none;">
+                    </div>
                     <!-- Personalizacion -->
                     <div class="form-check mb-3">
                         <input class="form-check-input" type="checkbox" id="personalizacion">
                         <label class="form-check-label" for="flexCheckDefault">
-                            El cliente puede pedir personalizacion.
+                            El cliente puede pedir personalización.
                         </label>
                     </div>
                     <!-- Boton -->
@@ -132,19 +131,28 @@
                         <button type="submit" class="btn btn-primary mb-3" href="/pages/listado-productos.html">Registrar</button>
                     </div>
                 </div>
-                <div class="col-2">
-                    
-                </div>
+                <div class="col-2"></div>
             </div>
-            
         </form>
     </main>
 
+    <!-- Toast de Bootstrap -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="toast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                Producto agregado exitosamente.
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
     <div id="footer-placeholder"></div>
 
-    <script src="../script/add-product.js"></script>
+    <script src="/script/add-product.js"></script>
 
-    <script src="../general/navbar/navbar.js"></script>
+    <script src="/general/navbar/navbar.js"></script>
 
     <script src="/general/footer/footer.js"></script>
 
