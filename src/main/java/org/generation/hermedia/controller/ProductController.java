@@ -1,13 +1,9 @@
 package org.generation.hermedia.controller;
 
 import org.generation.hermedia.exception.ProductNotFoundException;
-import org.generation.hermedia.exception.UserNotFoundException;
 import org.generation.hermedia.model.Product;
-import org.generation.hermedia.model.User;
 import org.generation.hermedia.repository.ProductRepository;
-import org.generation.hermedia.repository.UserRepository;
 import org.generation.hermedia.service.ProductService;
-import org.generation.hermedia.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/api/v2/products")
 @CrossOrigin(origins = "*")
 public class ProductController {
 
@@ -30,11 +26,13 @@ public class ProductController {
         this.productService = productService;
     }
 
+    // Get all products
     @GetMapping
     public List<Product> getAll() {
         return productService.getProducts();
     }
 
+    // Create product
     @PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody Product newProduct) {
         if (newProduct == null || newProduct.getName() == null || newProduct.getDescription() == null || newProduct.getPrice() == null) {
@@ -48,11 +46,8 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.createProduct(newProduct)); // 201 Created
     }
 
-
-
-
-    @GetMapping("{id}")//Llaves indican que el path puede ser cualquier n de id no es necesario colocar id
-
+    // Get by ID
+    @GetMapping("{id}")
     public ResponseEntity<Product> getById(@PathVariable Integer id) {
         try {
             return ResponseEntity.ok(productService.findById(id));
@@ -60,10 +55,6 @@ public class ProductController {
         } catch (ProductNotFoundException e) {
 
             return ResponseEntity.notFound().build();
-
         }
-
-
     }
-
 }

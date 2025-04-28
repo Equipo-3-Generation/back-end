@@ -1,6 +1,10 @@
 //Carrusel
 document.addEventListener("DOMContentLoaded", function() {
-    console.log("Página cargada correctamente.");
+
+    const usuarioActual = JSON.parse(localStorage.getItem('usuarioActual'));
+    if (usuarioActual) {
+        console.log('Bienvenida, ' + usuarioActual.name);
+    }
 
     // Cards
     const ratings = document.querySelectorAll(".rating");
@@ -41,29 +45,31 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 });
-// carrusuel
-document.addEventListener("DOMContentLoaded", function() {
-    console.log("Página cargada correctamente.");
-});
 
+document.addEventListener('DOMContentLoaded', function () {
+    const contenedor = document.getElementById('inicioProductosContainer');
+    const titulo = document.getElementById('productosRecientesTitulo');
+    const productos = JSON.parse(localStorage.getItem('inicioProductos')) || [];
 
-///
-document.addEventListener('DOMContentLoaded', () => {
-    const contenedor = document.getElementById('productosContainer');
-    const productos = JSON.parse(localStorage.getItem('productosEnInicio')) || []; 
+    if (productos.length > 0) {
+        titulo.style.display = 'block'; // Mostrar el título si hay productos
+    }
 
-    productos.forEach(producto => {
-        const div = document.createElement('div');
-        div.innerHTML = `
-            <div class="card mb-3">
-                <img src="${producto.imagen ? producto.imagen : 'https://via.placeholder.com/150'}" class="card-img-top" alt="${producto.nombre}">
+    productos.slice(0, 6).forEach((producto, index) => {
+        const card = document.createElement('div');
+        card.className = 'col-md-4';
+        card.innerHTML = `
+            <div class="card text-center">
+                <div class="imagen-box">
+                    <img src="${producto.imageUrl}" class="card-img-top imagen" alt="${producto.name}">
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">${producto.nombre}</h5>
-                    <p class="card-text">${producto.descripcion}</p>
-                    <p class="card-text"><strong>Precio:</strong> ${producto.precio} MXN</p>
+                    <h5 class="card-title fw-bold text-danger">${producto.name}</h5>
+                    <p class="card-text fw-bold">$${producto.price}</p>
+                    <a href="/pages/products.html" class="btn btn-dark rounded-2">Ver más productos</a>
                 </div>
             </div>
         `;
-        contenedor.appendChild(div);
+        contenedor.appendChild(card);
     });
 });

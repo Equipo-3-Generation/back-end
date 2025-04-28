@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="styles.css" rel="stylesheet">
+    <link rel="icon" href="/icon/favicon.ico" type="image/ico">
+    <link href="/style/styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <title>Productos</title>
@@ -13,71 +14,92 @@
     <div id="navbar-placeholder"></div>
 
     <main>
-        <div class="container-fluid border mt-5">
+        <div class="container-fluid mt-5">
             <div class="row my-3">
-                <h3>Filamento PLA con el mejor precio</h3>
+                <h3>¡Accede al catálogo de todos nuestros productos!</h3>
             </div>
-            <div class="row">
+
+            <!-- Productos estáticos -->
+            <div class="row row-cols-1 row-cols-md-5 g-4">
+                
                 <div class="col">
-                    <div class="card rounded-0" style="width: 18 rem;">
-                        <div class="imagen-box"><img src="/pictures/barquito.png" class="card-img-top imagen" alt="Mini barco decorativo"></div>
-                        
+                    <div class="card rounded-0 h-100 text-center">
+                        <div class="imagen-box">
+                            <img src="/pictures/barquito.png" class="card-img-top imagen" alt="Mini barco decorativo">
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title text-primary-emphasis fw-bold">MINI BARCO DECORATIVO</h5>
-                            <p class="card-text text-danger fw-bold">$150.65</p>
-                            <a href="#" class="btn btn-dark rounded-0">Añadir al carrito</a>
+                            <p class="card-text text-danger fw-bold">$150</p>
+                            <p class="text-muted small">Categoría: Diseño Artístico</p>
+                            <button class="btn btn-dark rounded-0" onclick="agregarProductoManual('MINI BARCO DECORATIVO', 150, '/pictures/barquito.png')">Añadir al carrito</button>
                         </div>
                     </div>
                 </div>
+
                 <div class="col">
-                    <div class="card rounded-0" style="width: 18 rem;">
-                        <div class="imagen-box"><img src="/pictures/casa.png" class="card-img-top imagen" alt="Casa negra mini"></div>
-                        
+                    <div class="card rounded-0 h-100 text-center">
+                        <div class="imagen-box">
+                            <img src="/pictures/casa.png" class="card-img-top imagen" alt="Casa negra mini">
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title text-primary-emphasis fw-bold">CASA NEGRA MINI</h5>
-                            <p class="card-text text-danger fw-bold">$87.99</p>
-                            <a href="#" class="btn btn-dark rounded-0">Añadir al carrito</a>
+                            <p class="card-text text-danger fw-bold">$85</p>
+                            <p class="text-muted small">Categoría: Diseño Artístico</p>
+                            <button class="btn btn-dark rounded-0" onclick="agregarProductoManual('CASA NEGRA MINI', 85, '/pictures/casa.png')">Añadir al carrito</button>
                         </div>
                     </div>
                 </div>
+
                 <div class="col">
-                    <div class="card rounded-0" style="width: 18 rem;">
-                        <div class="imagen-box"><img src="/pictures/pan.png" class="card-img-top imagen" alt="Modelo de pan"></div>
-                        
+                    <div class="card rounded-0 h-100 text-center">
+                        <div class="imagen-box">
+                            <img src="/pictures/pan.png" class="card-img-top imagen" alt="Modelo de pan">
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title text-primary-emphasis fw-bold">MODELO DE PAN</h5>
-                            <p class="card-text text-danger fw-bold">$105.99</p>
-                            <a href="#" class="btn btn-dark rounded-0">Añadir al carrito</a>
+                            <p class="card-text text-danger fw-bold">$105</p>
+                            <p class="text-muted small">Categoría: Diseño Artístico</p>
+                            <button class="btn btn-dark rounded-0" onclick="agregarProductoManual('MODELO DE PAN', 105, '/pictures/pan.png')">Añadir al carrito</button>
                         </div>
                     </div>
                 </div>
+
                 <div class="col">
-                    <div class="card rounded-0" style="width: 18 rem;">
-                        <div></div>
-                        <img src="/pictures/maceta-animalitos.jpg" class="card-img-top rounded-0" alt="Macetas de animalitos">
+                    <div class="card rounded-0 h-100 text-center">
+                        <div class="imagen-box">
+                            <img src="/pictures/maceta-animalitos.jpg" class="card-img-top rounded-0" alt="Macetas de animalitos">
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title text-primary-emphasis fw-bold">MACETAS DE ANIMALITOS</h5>
-                            <p class="card-text text-danger fw-bold">$87.99</p>
-                            <a href="#" class="btn btn-dark rounded-0">Añadir al carrito</a>
+                            <p class="card-text text-danger fw-bold">$85</p>
+                            <p class="text-muted small">Categoría: Diseño Artístico</p>
+                            <button class="btn btn-dark rounded-0" onclick="agregarProductoManual('MACETAS DE ANIMALITOS', 85, '/pictures/maceta-animalitos.jpg')">Añadir al carrito</button>
                         </div>
                     </div>
                 </div>
+
                 <div class="col">
-                    <div class="card rounded-0" style="width: 18 rem;">
-                        <img src="/pictures/soporte-cerveza.png" class="card-img-top" alt="Soporte universal para latas de cerveza">
+                    <div class="card rounded-0 h-100 text-center">
+                        <div class="imagen-box">
+                            <img src="/pictures/soporte-cerveza.png" class="card-img-top" alt="Soporte universal para latas de cerveza">
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title text-primary-emphasis fw-bold">SOPORTE UNIVERSAL PARA LATAS DE CERVEZA</h5>
-                            <p class="card-text text-danger fw-bold">$87.99</p>
-                            <a href="#" class="btn btn-dark rounded-0">Añadir al carrito</a>
+                            <h5 class="card-title text-primary-emphasis fw-bold">SOPORTE PARA LATAS DE CERVEZA</h5>
+                            <p class="card-text text-danger fw-bold">$85</p>
+                            <p class="text-muted small">Categoría: Diseño Artístico</p>
+                            <button class="btn btn-dark rounded-0" onclick="agregarProductoManual('SOPORTE PARA LATAS DE CERVEZA', 85, '/pictures/soporte-cerveza.png')">Añadir al carrito</button>
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div id="productosContainer" class="row row-cols-3 row-cols-md-5 g-4"></div>
-                </div>
+            </div>
+
+            <!-- Productos dinámicos -->
+            <div class="row row-cols-1 row-cols-md-5 g-4 mt-3" id="productosContainer">
+                <!-- Aquí se insertan las tarjetas nuevas -->
             </div>
         </div>
     </main>
+
 
     <div id="footer-placeholder"></div>
 

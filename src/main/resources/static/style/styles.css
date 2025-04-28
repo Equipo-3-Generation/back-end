@@ -42,7 +42,7 @@
     width: 30px; /* Ajusta el tamaño de los íconos */
 }
 
- /* AQUI TERMINA EL NABVBAR*/
+/* AQUI TERMINA EL NABVBAR*/
 
 /* Perfil de usuario */
 .user-image{
@@ -52,7 +52,7 @@
 
 /* Perfil de usuario */
 
- /* INICIA EL FOOTER
+/* INICIA EL FOOTER
   footer {
   background-color: #CCCCCC !important; /* Rojo */
 
@@ -112,7 +112,7 @@ footer .list-group-item {
   color: #092cc7; /* Color naranja o cualquier otro */
 }
 .borde-azul {
- 
+
   border: 25px solid #020c11; /* Borde azul grueso */
   padding: 1px; /* Espaciado entre el borde y el contenido */
   display: inline-block;
@@ -142,7 +142,7 @@ footer .list-group-item {
     margin-top: 50px;
   } 
   .mag-3d{
-   width: 800px;
+    width: 800px;
   }
   .parrafo-nosotras{
     font-size: 20px;
@@ -257,7 +257,7 @@ footer .list-group-item {
     }
     .mag-3d{
       width: 390px;
-     }
+    }
 
   }
 
@@ -268,7 +268,7 @@ footer .list-group-item {
     }
     .mag-3d{
       width: 150px;
-     }
+    }
 }
 
 /* Index */
@@ -349,8 +349,6 @@ footer .list-group-item {
 
 
 /*Terminan estilos de carrusel*/
-
-
 
     /* empiezan cards*/
     .card {
@@ -452,3 +450,15 @@ footer .list-group-item {
 }
 
 /*Termina Index*/
+
+.imagen-box {
+  overflow: hidden;
+}
+
+.imagen-box img {
+  transition: transform 0.4s ease;
+}
+
+.imagen-box:hover img {
+  transform: scale(1.1);
+}

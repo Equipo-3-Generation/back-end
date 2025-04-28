@@ -4,43 +4,92 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', function (event) {
         event.preventDefault();
 
-        const nombre = document.getElementById('nombreProducto').value;
-        const descripcion = document.getElementById('descripcionProducto').value;
-        const precio = document.getElementById('precioProducto').value;
-        const stock = document.getElementById('stockProducto').value;
-        const dimensiones = `${document.getElementById('largoProducto').value} X ${document.getElementById('anchoProducto').value} X ${document.getElementById('altoProducto').value}`;
+        // Capturar datos del formulario
+        const name = document.getElementById('nombreProducto').value.trim();
+        const description = document.getElementById('descripcionProducto').value.trim();
+        const categorySelect = document.getElementById('categoriaProducto');
+        const category = categorySelect.options[categorySelect.selectedIndex].text;
+        const price = parseFloat(document.getElementById('precioProducto').value);
+        const stock = parseInt(document.getElementById('stockProducto').value);
+        const dimensions = `${document.getElementById('largoProducto').value}x${document.getElementById('anchoProducto').value}x${document.getElementById('altoProducto').value} cm`;
+        const weight = parseFloat(document.getElementById('pesoProducto').value);
+        const imageUrl = document.getElementById('formFile').value; 
+        const customizable = document.getElementById('personalizacion').checked;
 
-        const producto = {
-            name: nombre,
-            description: descripcion,
-            price: parseFloat(precio),
-            stock: parseInt(stock),
-            dimensions: dimensiones
+        // Material
+        const materials = [];
+        if (document.getElementById('materialPLA').checked) materials.push('PLA');
+        if (document.getElementById('materialABS').checked) materials.push('ABS');
+        if (document.getElementById('materialPETG').checked) materials.push('PETG');
+
+        // Validación de entradas
+        if (!name || !description || isNaN(price) || isNaN(stock) || isNaN(weight) || !imageUrl) {
+            alert('Por favor, completa todos los campos.');
+            return;
         }
 
-        const url = `http://3.84.190.109/api/products`;
+        // Crear objeto producto
+        const nuevoProducto = {
+            name,
+            description,
+            category,
+            price,
+            stock,
+            dimensions,
+            weight,
+            imageUrl,
+            materials: materials.join(', '),
+            customizable
+        };
 
-        fetch(url, {
+        // Guardar objetos
+        fetch(`http://localhost:8080/api/v2/products`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(producto)
+            body: JSON.stringify(nuevoProducto)
         })
         .then(response => {
-            if (!response.ok) {
-                return Promise.reject('Failed to create product');
+            if(!response.ok) {
+                throw new Error('No se pudo agregar el producto');
             }
             return response.json();
         })
         .then(data => {
-            console.log('Producto guardado:', data);
-            alert('Producto registrado exitosamente.');
-            form.reset();
+            mostrarToast('Producto agregado exitosamente.');
+            productForm.reset();
+            document.getElementById('imagePreview').style.display = 'none';
         })
         .catch(error => {
-            console.error('Error al registrar el producto:', error);
-            alert('Error al registrar el producto. Intente nuevamente.');
+            console.error('Error', error);
+            if (error.message.includes('409') || error.message.includes('duplicado')) {
+                mostrarToast('Ya existe un producto con ese nombre.');
+            } else {
+                mostrarToast('Error al agregar producto.');
+            }
         });
     });
+
+    // Mostrar vista previa de imagen al escribir URL
+    const inputImagen = document.getElementById('formFile');
+    const imagePreview = document.getElementById('imagePreview');
+
+    inputImagen.addEventListener('input', function() {
+        const url = inputImagen.value.trim();
+        if (url) {
+            imagePreview.src = url;
+            imagePreview.style.display = 'block';
+        } else {
+            imagePreview.style.display = 'none';
+        }
+    });
 });
+
+function mostrarToast(mensaje) {
+    const toast = document.getElementById('toast');
+    const toastBody = toast.querySelector('.toast-body');
+    toastBody.textContent = mensaje;
+    const bsToast = new bootstrap.Toast(toast);
+    bsToast.show();
+}

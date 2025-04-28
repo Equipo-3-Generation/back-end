@@ -25,11 +25,6 @@ public class User {
     @Column(length = 15, nullable = false)
     private String password;
 
-
-
-    //Despues de añadir las restricciones con las anotaciones hacemos este Constructor vacio para JPA para poder hacer la tabla se añade vacio
-
-
     public User() {
     }
 
@@ -82,9 +77,6 @@ public class User {
         this.password = password;
     }
 
-
-
-
     @Override
     public String toString() {
         return "User{" +
@@ -96,9 +88,6 @@ public class User {
                 '}';
     }
 
-
-
-
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof User user)) return false;
@@ -109,7 +98,6 @@ public class User {
     public int hashCode() {
         return Objects.hash(id, name, telephoneNumber, email, password);
     }
-
 
     //Relación
     @OneToMany(mappedBy = "user")
@@ -123,7 +111,6 @@ public class User {
     public void setProducts(List<Product> products) {
         this.products = products;
     }
-
 
 }
 

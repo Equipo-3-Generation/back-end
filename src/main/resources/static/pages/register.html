@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/icon/favicon.ico" type="image/ico">
     <link href="/style/styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Registrate - h3rmeDia</title>
+    <title>Registro</title>
 </head>
 
 <body>
@@ -23,37 +24,63 @@
                     <h3 class="mt-4">Regístrate</h3>
                 </div>
                 <form id="registerForm" action="javascript:void(0)" novalidate>
+
+                    <!-- Nombre -->
                     <div class="mb-3">
                         <label for="name" class="form-label">Nombre</label>
                         <input type="name" class="form-control" id="name" name="name" required
                             placeholder="Ingresa tu nombre">
                     </div>
+
+                    <!-- Número de teléfono -->
                     <div class="mb-3">
-                        <label for="tel" class="form-label">Número teléfono</label>
+                        <label for="tel" class="form-label">Número de teléfono</label>
                         <input type="tel" class="form-control" id="tel" name="tel" required
                             placeholder="Ingresa tu número de teléfono">
                     </div>
+
+                    <!-- Email -->
                     <div class="mb-3">
                         <label for="email" class="form-label">Correo electrónico</label>
-                        <input type="email" class="form-control" id="email" name="email" required
+                        <input type="email" class="form-control" id="email" name="email" autocomplete="email" required
                             placeholder="Ingresa tu correo electrónico">
                     </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="password" name="password" required
-                            placeholder="Ingresa tu contraseña" minlength="8">
+
+                    <!-- Contraseña -->
+                    <label for="password" class="form-label">Contraseña</label>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" minlength="8" autocomplete="current-password" required>
+                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                            <i class="bi bi-eye-fill"></i> <!-- Bootstrap Icons -->
+                        </button>
                     </div>
-                    <div class="mb-3">
-                        <label for="confirm-password" class="form-label">Confirmar contraseña</label>
-                        <input type="password" class="form-control" id="confirm-password" name="confirm-password"
-                            required placeholder="Repite tu contraseña" minlength="8">
+
+                    <!-- Confirmar contraseña -->
+                    <label for="confirm-password" class="form-label">Confirmar contraseña</label>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" id="confirm-password" placeholder="Ingresa nuevamente tu contraseña" minlength="8" autocomplete="current-password" required >
+                        <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">
+                            <i class="bi bi-eye-fill"></i> <!-- Bootstrap Icons -->
+                        </button>
                     </div>
+
+                    <!-- Términos y condiciones -->
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="rememberMe" required>
-                        <label class="form-check-label" for="rememberMe">Aceptar Términos y Condiciones</label>
+
+                        <input type="checkbox" class="form-check-input" id="terminos" required>
+                        <label class="form-check-label" for="terminos">Aceptar Términos y Condiciones</label>
+
                     </div>
+
+                    <!-- Alertas de errores -->
                     <div id="errores"></div>
+
+                    <!-- Botón registrarse -->
                     <button type="submit" class="btn btn-dark w-100">Registrarse</button>
+
+                    <div class="text-center mt-3">
+                        <p>¿Ya está registrado? <a href="/pages/login.html">Inicie sesión aquí</a></p>
+                    </div>
                 </form>
                 
                 <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
@@ -79,10 +106,12 @@
 
     <script src="/general/footer/footer.js"></script>
 
+    <script src="/script/register.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    <script src="/script/register.js"></script>
+    
 </body>
 
 </html>
