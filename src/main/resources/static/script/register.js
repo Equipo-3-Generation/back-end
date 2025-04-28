@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
+
         // Crear objeto
         const nuevoUsuario = { 
             name, 
