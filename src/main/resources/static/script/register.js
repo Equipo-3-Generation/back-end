@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
             password 
         };
 
-        fetch(`http://localhost:8080/api/v2/users`, {
+        fetch(`http://3.84.190.109/api/v2/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const contenedor = document.getElementById('productList');
 
-    fetch(`http://localhost:8080/api/v2/products`)
+    fetch(`http://3.84.190.109/api/v2/products`)
         .then(response => response.json())
         .then(productos => {
             localStorage.setItem('productos', JSON.stringify(productos));

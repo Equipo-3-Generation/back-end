@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
             mostrarModal('Por favor completa todos los campos')
         }
 
-        fetch(`http://localhost:8080/api/v2/users/email/${email}`)
+        fetch(`http://3.84.190.109/api/v2/users/email/${email}`)
             .then(response => {
                 if(!response.ok){
                     throw new Error('Correo no encontrado');

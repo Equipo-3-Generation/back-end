@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const userId = currentUser.id;
         const productIds = carrito.map(producto => producto.id); // sólo IDs de productos
 
-        fetch('http://localhost:8080/api/carts', {
+        fetch('http://3.84.190.109/api/v2/carts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
